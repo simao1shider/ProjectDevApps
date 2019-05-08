@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.numClientes = new System.Windows.Forms.ToolStripStatusLabel();
+            this.numVendas = new System.Windows.Forms.ToolStripStatusLabel();
+            this.numAlugueres = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -83,18 +91,68 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelHora,
+            this.numClientes,
+            this.numVendas,
+            this.numAlugueres});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 369);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(662, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelHora
+            // 
+            this.toolStripStatusLabelHora.Name = "toolStripStatusLabelHora";
+            this.toolStripStatusLabelHora.Size = new System.Drawing.Size(110, 17);
+            this.toolStripStatusLabelHora.Text = "00/00/0000 00:00:00";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // numClientes
+            // 
+            this.numClientes.Name = "numClientes";
+            this.numClientes.Size = new System.Drawing.Size(61, 17);
+            this.numClientes.Text = "Clientes: 0";
+            // 
+            // numVendas
+            // 
+            this.numVendas.Name = "numVendas";
+            this.numVendas.Size = new System.Drawing.Size(101, 17);
+            this.numVendas.Text = "Total de Vendas: 0";
+            // 
+            // numAlugueres
+            // 
+            this.numAlugueres.Name = "numAlugueres";
+            this.numAlugueres.Size = new System.Drawing.Size(98, 17);
+            this.numAlugueres.Text = "Total Alugados: 0";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 341);
+            this.ClientSize = new System.Drawing.Size(662, 391);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stand";
+            this.TopMost = true;
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,6 +162,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelHora;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel numClientes;
+        private System.Windows.Forms.ToolStripStatusLabel numVendas;
+        private System.Windows.Forms.ToolStripStatusLabel numAlugueres;
     }
 }
 
