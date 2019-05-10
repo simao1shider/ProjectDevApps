@@ -36,10 +36,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelHora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.numClientes = new System.Windows.Forms.ToolStripStatusLabel();
             this.numVendas = new System.Windows.Forms.ToolStripStatusLabel();
             this.numAlugueres = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,9 +98,9 @@
             this.numClientes,
             this.numVendas,
             this.numAlugueres});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 369);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 342);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(662, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(635, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -109,12 +109,6 @@
             this.toolStripStatusLabelHora.Name = "toolStripStatusLabelHora";
             this.toolStripStatusLabelHora.Size = new System.Drawing.Size(110, 17);
             this.toolStripStatusLabelHora.Text = "00/00/0000 00:00:00";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // numClientes
             // 
@@ -134,11 +128,17 @@
             this.numAlugueres.Size = new System.Drawing.Size(98, 17);
             this.numAlugueres.Text = "Total Alugados: 0";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 391);
+            this.ClientSize = new System.Drawing.Size(635, 364);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
