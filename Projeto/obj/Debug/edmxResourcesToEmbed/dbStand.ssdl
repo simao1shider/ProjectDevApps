@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbStand.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="dbStandStoreContainer">
+    <EntitySet Name="ServicoSet" EntityType="dbStand.Store.ServicoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AluguerSet" EntityType="dbStand.Store.AluguerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ParcelaSet" EntityType="dbStand.Store.ParcelaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarroSet" EntityType="dbStand.Store.CarroSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClienteSet" EntityType="dbStand.Store.ClienteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VendaSet" EntityType="dbStand.Store.VendaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarroSet_CarroOfficina" EntityType="dbStand.Store.CarroSet_CarroOfficina" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarroSet_CarroVenda" EntityType="dbStand.Store.CarroSet_CarroVenda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarroSet_CarroAluguer" EntityType="dbStand.Store.CarroSet_CarroAluguer" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ServicoParcela" Association="dbStand.Store.ServicoParcela">
+      <End Role="Servico" EntitySet="ServicoSet" />
+      <End Role="Parcela" EntitySet="ParcelaSet" />
+    </AssociationSet>
+    <AssociationSet Name="CarroOfficinaServico" Association="dbStand.Store.CarroOfficinaServico">
+      <End Role="CarroOfficina" EntitySet="CarroSet_CarroOfficina" />
+      <End Role="Servico" EntitySet="ServicoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteCarroOfficina" Association="dbStand.Store.ClienteCarroOfficina">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="CarroOfficina" EntitySet="CarroSet_CarroOfficina" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteVenda" Association="dbStand.Store.ClienteVenda">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Venda" EntitySet="VendaSet" />
+    </AssociationSet>
+    <AssociationSet Name="VendaCarroVenda" Association="dbStand.Store.VendaCarroVenda">
+      <End Role="Venda" EntitySet="VendaSet" />
+      <End Role="CarroVenda" EntitySet="CarroSet_CarroVenda" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteAluguer" Association="dbStand.Store.ClienteAluguer">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Aluguer" EntitySet="AluguerSet" />
+    </AssociationSet>
+    <AssociationSet Name="CarroAluguerAluguer" Association="dbStand.Store.CarroAluguerAluguer">
+      <End Role="CarroAluguer" EntitySet="CarroSet_CarroAluguer" />
+      <End Role="Aluguer" EntitySet="AluguerSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarroOfficina_inherits_Carro" Association="dbStand.Store.FK_CarroOfficina_inherits_Carro">
+      <End Role="Carro" EntitySet="CarroSet" />
+      <End Role="CarroOfficina" EntitySet="CarroSet_CarroOfficina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarroVenda_inherits_Carro" Association="dbStand.Store.FK_CarroVenda_inherits_Carro">
+      <End Role="Carro" EntitySet="CarroSet" />
+      <End Role="CarroVenda" EntitySet="CarroSet_CarroVenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarroAluguer_inherits_Carro" Association="dbStand.Store.FK_CarroAluguer_inherits_Carro">
+      <End Role="Carro" EntitySet="CarroSet" />
+      <End Role="CarroAluguer" EntitySet="CarroSet_CarroAluguer" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ServicoSet">
+    <Key>
+      <PropertyRef Name="IdServicos" />
+    </Key>
+    <Property Name="IdServicos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataEntrada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataSaida" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarroOfficina_IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AluguerSet">
+    <Key>
+      <PropertyRef Name="IdAluguer" />
+    </Key>
+    <Property Name="IdAluguer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataInicio" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataFim" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kms" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClienteIdCliente1" Type="int" Nullable="false" />
+    <Property Name="CarroAluguer_IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParcelaSet">
+    <Key>
+      <PropertyRef Name="IdParcela" />
+    </Key>
+    <Property Name="IdParcela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ServicoIdServicos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ServicoIdServicos1" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarroSet">
+    <Key>
+      <PropertyRef Name="IdCarro" />
+    </Key>
+    <Property Name="IdCarro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroChassis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Marca" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Modelo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Combustivel" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteSet">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NIF" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Morada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contacto" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VendaSet">
+    <Key>
+      <PropertyRef Name="IdVenda" />
+    </Key>
+    <Property Name="IdVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
+    <Property Name="CarroVenda_IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarroSet_CarroOfficina">
+    <Key>
+      <PropertyRef Name="IdCarro" />
+    </Key>
+    <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kms" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
+    <Property Name="IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarroSet_CarroVenda">
+    <Key>
+      <PropertyRef Name="IdCarro" />
+    </Key>
+    <Property Name="Extras" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarroSet_CarroAluguer">
+    <Key>
+      <PropertyRef Name="IdCarro" />
+    </Key>
+    <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdCarro" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ServicoParcela">
+    <End Role="Servico" Type="dbStand.Store.ServicoSet" Multiplicity="1" />
+    <End Role="Parcela" Type="dbStand.Store.ParcelaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servico">
+        <PropertyRef Name="IdServicos" />
+      </Principal>
+      <Dependent Role="Parcela">
+        <PropertyRef Name="ServicoIdServicos1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CarroOfficinaServico">
+    <End Role="CarroOfficina" Type="dbStand.Store.CarroSet_CarroOfficina" Multiplicity="1" />
+    <End Role="Servico" Type="dbStand.Store.ServicoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarroOfficina">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="Servico">
+        <PropertyRef Name="CarroOfficina_IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteCarroOfficina">
+    <End Role="Cliente" Type="dbStand.Store.ClienteSet" Multiplicity="1" />
+    <End Role="CarroOfficina" Type="dbStand.Store.CarroSet_CarroOfficina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="CarroOfficina">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteVenda">
+    <End Role="Cliente" Type="dbStand.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Venda" Type="dbStand.Store.VendaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VendaCarroVenda">
+    <End Role="Venda" Type="dbStand.Store.VendaSet" Multiplicity="*" />
+    <End Role="CarroVenda" Type="dbStand.Store.CarroSet_CarroVenda" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CarroVenda">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="CarroVenda_IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteAluguer">
+    <End Role="Cliente" Type="dbStand.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Aluguer" Type="dbStand.Store.AluguerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Aluguer">
+        <PropertyRef Name="ClienteIdCliente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CarroAluguerAluguer">
+    <End Role="CarroAluguer" Type="dbStand.Store.CarroSet_CarroAluguer" Multiplicity="1" />
+    <End Role="Aluguer" Type="dbStand.Store.AluguerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarroAluguer">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="Aluguer">
+        <PropertyRef Name="CarroAluguer_IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarroOfficina_inherits_Carro">
+    <End Role="Carro" Type="dbStand.Store.CarroSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarroOfficina" Type="dbStand.Store.CarroSet_CarroOfficina" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Carro">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="CarroOfficina">
+        <PropertyRef Name="IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarroVenda_inherits_Carro">
+    <End Role="Carro" Type="dbStand.Store.CarroSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarroVenda" Type="dbStand.Store.CarroSet_CarroVenda" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Carro">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="CarroVenda">
+        <PropertyRef Name="IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarroAluguer_inherits_Carro">
+    <End Role="Carro" Type="dbStand.Store.CarroSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CarroAluguer" Type="dbStand.Store.CarroSet_CarroAluguer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Carro">
+        <PropertyRef Name="IdCarro" />
+      </Principal>
+      <Dependent Role="CarroAluguer">
+        <PropertyRef Name="IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

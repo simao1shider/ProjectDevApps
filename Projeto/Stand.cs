@@ -25,5 +25,17 @@ namespace Projeto
             toolStripStatusLabelHora.Text = DateTime.Now.ToShortDateString()+" "+DateTime.Now.ToLongTimeString();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormClientes clientes = new FormClientes(this);
+            clientes.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormOficina oficina = new FormOficina(this);
+            oficina.Show();
+        }
     }
 }

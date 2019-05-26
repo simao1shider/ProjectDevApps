@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a3b44aa465e4a3284b8ad29a7e2c148" Name="Diagram1" ZoomLevel="83" >
+        <EntityTypeShape EntityType="dbStand.Carro" Width="1.5" PointX="10.75" PointY="3.875" />
+        <EntityTypeShape EntityType="dbStand.Servico" Width="1.5" PointX="6.625" PointY="1.375" />
+        <EntityTypeShape EntityType="dbStand.Aluguer" Width="1.5" PointX="4.875" PointY="6.375" />
+        <EntityTypeShape EntityType="dbStand.Parcela" Width="1.5" PointX="3.125" PointY="1.375" />
+        <AssociationConnector Association="dbStand.ServicoParcela" />
+        <EntityTypeShape EntityType="dbStand.CarroOfficina" Width="1.5" PointX="10.75" PointY="0.75" />
+        <InheritanceConnector EntityType="dbStand.CarroOfficina" />
+        <AssociationConnector Association="dbStand.CarroOfficinaServico" />
+        <EntityTypeShape EntityType="dbStand.Cliente" Width="1.5" PointX="0.625" PointY="2.875" />
+        <AssociationConnector Association="dbStand.ClienteCarroOfficina" />
+        <EntityTypeShape EntityType="dbStand.Venda" Width="1.5" PointX="4.625" PointY="3.75" />
+        <AssociationConnector Association="dbStand.ClienteVenda" />
+        <EntityTypeShape EntityType="dbStand.CarroVenda" Width="1.5" PointX="7.25" PointY="4.25" />
+        <AssociationConnector Association="dbStand.VendaCarroVenda" />
+        <InheritanceConnector EntityType="dbStand.CarroVenda" />
+        <AssociationConnector Association="dbStand.ClienteAluguer" />
+        <EntityTypeShape EntityType="dbStand.CarroAluguer" Width="1.5" PointX="10.75" PointY="6.75" />
+        <AssociationConnector Association="dbStand.CarroAluguerAluguer" />
+        <InheritanceConnector EntityType="dbStand.CarroAluguer" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
