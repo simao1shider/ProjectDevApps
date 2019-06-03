@@ -27,12 +27,12 @@
       <End Role="Venda" EntitySet="VendaSet" />
       <End Role="CarroVenda" EntitySet="CarroSet" />
     </AssociationSet>
-    <AssociationSet Name="ClienteAluguer" Association="dbStand.ClienteAluguer">
-      <End Role="Cliente" EntitySet="ClienteSet" />
-      <End Role="Aluguer" EntitySet="AluguerSet" />
-    </AssociationSet>
     <AssociationSet Name="CarroAluguerAluguer" Association="dbStand.CarroAluguerAluguer">
       <End Role="CarroAluguer" EntitySet="CarroSet" />
+      <End Role="Aluguer" EntitySet="AluguerSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteAluguer" Association="dbStand.ClienteAluguer">
+      <End Role="Cliente" EntitySet="ClienteSet" />
       <End Role="Aluguer" EntitySet="AluguerSet" />
     </AssociationSet>
   </EntityContainer>
@@ -54,7 +54,6 @@
     <Property Name="DataEntrada" Type="String" Nullable="false" />
     <Property Name="Tipo" Type="String" Nullable="false" />
     <Property Name="DataSaida" Type="String" Nullable="false" />
-    <Property Name="Property1" Type="String" Nullable="false" />
     <NavigationProperty Name="Parcelas" Relationship="dbStand.ServicoParcela" FromRole="Servico" ToRole="Parcela" />
     <NavigationProperty Name="CarroOfficina" Relationship="dbStand.CarroOfficinaServico" FromRole="Servico" ToRole="CarroOfficina" />
   </EntityType>
@@ -67,10 +66,9 @@
     <Property Name="DataFim" Type="String" Nullable="false" />
     <Property Name="Valor" Type="String" Nullable="false" />
     <Property Name="Kms" Type="String" Nullable="false" />
-    <Property Name="ClienteIdCliente" Type="String" Nullable="false" />
-    <NavigationProperty Name="Cliente" Relationship="dbStand.ClienteAluguer" FromRole="Aluguer" ToRole="Cliente" />
-    <Property Name="ClienteIdCliente1" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CarroAluguer" Relationship="dbStand.CarroAluguerAluguer" FromRole="Aluguer" ToRole="CarroAluguer" />
+    <NavigationProperty Name="Cliente" Relationship="dbStand.ClienteAluguer" FromRole="Aluguer" ToRole="Cliente" />
+    <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Parcela">
     <Key>
@@ -117,7 +115,7 @@
     <Property Name="Contacto" Type="String" Nullable="false" />
     <NavigationProperty Name="CarrosOfficina" Relationship="dbStand.ClienteCarroOfficina" FromRole="Cliente" ToRole="CarroOfficina" />
     <NavigationProperty Name="Vendas" Relationship="dbStand.ClienteVenda" FromRole="Cliente" ToRole="Venda" />
-    <NavigationProperty Name="Alugueres" Relationship="dbStand.ClienteAluguer" FromRole="Cliente" ToRole="Aluguer" />
+    <NavigationProperty Name="Aluguer" Relationship="dbStand.ClienteAluguer" FromRole="Cliente" ToRole="Aluguer" />
   </EntityType>
   <Association Name="ClienteCarroOfficina">
     <End Type="dbStand.Cliente" Role="Cliente" Multiplicity="1" />
@@ -163,18 +161,6 @@
     <End Type="dbStand.Venda" Role="Venda" Multiplicity="1" />
     <End Type="dbStand.CarroVenda" Role="CarroVenda" Multiplicity="1" />
   </Association>
-  <Association Name="ClienteAluguer">
-    <End Type="dbStand.Cliente" Role="Cliente" Multiplicity="1" />
-    <End Type="dbStand.Aluguer" Role="Aluguer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="IdCliente" />
-      </Principal>
-      <Dependent Role="Aluguer">
-        <PropertyRef Name="ClienteIdCliente1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="CarroAluguer" BaseType="dbStand.Carro">
     <Property Name="Estado" Type="String" Nullable="false" />
     <Property Name="Matricula" Type="String" Nullable="false" />
@@ -183,5 +169,17 @@
   <Association Name="CarroAluguerAluguer">
     <End Type="dbStand.CarroAluguer" Role="CarroAluguer" Multiplicity="1" />
     <End Type="dbStand.Aluguer" Role="Aluguer" Multiplicity="*" />
+  </Association>
+  <Association Name="ClienteAluguer">
+    <End Type="dbStand.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="dbStand.Aluguer" Role="Aluguer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Aluguer">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,19 @@ namespace Projeto
 {
     public partial class FormOficina : Form
     {
-        public FormOficina(Form home)
+        public dbStandContainer dbcontainer = null;
+        public Cliente cliente = null;
+
+
+        public FormOficina(Home form)
         {
             InitializeComponent();
+            dbcontainer = form.dbcontainer;
+            cliente = form.cliente;
+            (from pessoa in dbcontainer.ClienteSet
+             orderby pessoa.Nome
+             select pessoa).Load();
+            listBoxClientes.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
         }
 
     }

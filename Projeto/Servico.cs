@@ -24,7 +24,6 @@ namespace Projeto
         public string DataEntrada { get; set; }
         public string Tipo { get; set; }
         public string DataSaida { get; set; }
-        public string Property1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parcela> Parcelas { get; set; }

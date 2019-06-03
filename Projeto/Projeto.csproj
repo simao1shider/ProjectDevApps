@@ -70,7 +70,6 @@
     <Compile Include="CarroVenda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClassCliente.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
@@ -88,6 +87,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbStand.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FormCarros1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCarros1.Designer.cs">
+      <DependentUpon>FormCarros1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormClientes.cs">
       <SubType>Form</SubType>
@@ -118,6 +123,9 @@
     <Compile Include="Venda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormCarros1.resx">
+      <DependentUpon>FormCarros1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormClientes.resx">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +152,7 @@
       <DependentUpon>dbStand.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Carro.datasource" />
     <None Include="Properties\DataSources\Cliente.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

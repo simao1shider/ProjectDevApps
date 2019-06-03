@@ -13,23 +13,24 @@ namespace Projeto
 {
     public partial class FormClientes : Form
     {
-        private dbStandContainer meuExemplo;
+        public dbStandContainer dbcontainer = null;
+        public Cliente cliente = null;
 
-        public FormClientes(Form form)
+        public FormClientes(Home form)
         {
             InitializeComponent();
-            meuExemplo = new dbStandContainer();
-            (from pessoa in meuExemplo.ClienteSet
+            dbcontainer = form.dbcontainer;
+            cliente = form.cliente;
+            (from pessoa in dbcontainer.ClienteSet
              orderby pessoa.Nome
              select pessoa).Load();
-            clienteBindingSource.DataSource = meuExemplo.ClienteSet.Local.ToBindingList();
-
-            //ClassCliente cliente = clienteDataGridView.CurrentRow.DataBoundItem as ClassCliente;
+            clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+           
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-
+            cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
         }
 
         private void clienteDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,7 +40,8 @@ namespace Projeto
 
         private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            meuExemplo.SaveChanges();
+            dbcontainer.SaveChanges();
+            cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
@@ -51,29 +53,30 @@ namespace Projeto
         {
             if (textBoxFiltrar.Text.Length > 0)
             {
-                bindingNavigatorAddNewItem.Enabled = false;
-                meuExemplo = new dbStandContainer();
+                bindingNavigatorAddNewItem.Enabled = false;
+
+                dbcontainer = new dbStandContainer();
                 String textoFiltro = textBoxFiltrar.Text;
 
-                (from pessoa in meuExemplo.ClienteSet
+                (from pessoa in dbcontainer.ClienteSet
                  where pessoa.Nome.ToUpper().Contains(textoFiltro.ToUpper())
                  orderby pessoa.Nome
                  select pessoa).Load();
 
-                clienteBindingSource.DataSource = meuExemplo.ClienteSet.Local.ToBindingList();
+                clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
             }
             else
             {
                 bindingNavigatorAddNewItem.Enabled = true;
 
-                meuExemplo.Dispose();
-                meuExemplo = new dbStandContainer();
+                dbcontainer.Dispose();
+                dbcontainer = new dbStandContainer();
 
-                (from pessoa in meuExemplo.ClienteSet
+                (from pessoa in dbcontainer.ClienteSet
                  orderby pessoa.Nome
                  select pessoa).Load();
 
-                clienteBindingSource.DataSource = meuExemplo.ClienteSet.Local.ToBindingList();
+                clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
             }
         }
     }

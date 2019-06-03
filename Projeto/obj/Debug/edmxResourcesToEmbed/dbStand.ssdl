@@ -30,12 +30,12 @@
       <End Role="Venda" EntitySet="VendaSet" />
       <End Role="CarroVenda" EntitySet="CarroSet_CarroVenda" />
     </AssociationSet>
-    <AssociationSet Name="ClienteAluguer" Association="dbStand.Store.ClienteAluguer">
-      <End Role="Cliente" EntitySet="ClienteSet" />
-      <End Role="Aluguer" EntitySet="AluguerSet" />
-    </AssociationSet>
     <AssociationSet Name="CarroAluguerAluguer" Association="dbStand.Store.CarroAluguerAluguer">
       <End Role="CarroAluguer" EntitySet="CarroSet_CarroAluguer" />
+      <End Role="Aluguer" EntitySet="AluguerSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteAluguer" Association="dbStand.Store.ClienteAluguer">
+      <End Role="Cliente" EntitySet="ClienteSet" />
       <End Role="Aluguer" EntitySet="AluguerSet" />
     </AssociationSet>
     <AssociationSet Name="FK_CarroOfficina_inherits_Carro" Association="dbStand.Store.FK_CarroOfficina_inherits_Carro">
@@ -59,7 +59,6 @@
     <Property Name="DataEntrada" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DataSaida" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CarroOfficina_IdCarro" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AluguerSet">
@@ -71,8 +70,7 @@
     <Property Name="DataFim" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Kms" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ClienteIdCliente" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ClienteIdCliente1" Type="int" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="CarroAluguer_IdCarro" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ParcelaSet">
@@ -200,18 +198,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ClienteAluguer">
-    <End Role="Cliente" Type="dbStand.Store.ClienteSet" Multiplicity="1" />
-    <End Role="Aluguer" Type="dbStand.Store.AluguerSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cliente">
-        <PropertyRef Name="IdCliente" />
-      </Principal>
-      <Dependent Role="Aluguer">
-        <PropertyRef Name="ClienteIdCliente1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="CarroAluguerAluguer">
     <End Role="CarroAluguer" Type="dbStand.Store.CarroSet_CarroAluguer" Multiplicity="1" />
     <End Role="Aluguer" Type="dbStand.Store.AluguerSet" Multiplicity="*" />
@@ -221,6 +207,18 @@
       </Principal>
       <Dependent Role="Aluguer">
         <PropertyRef Name="CarroAluguer_IdCarro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteAluguer">
+    <End Role="Cliente" Type="dbStand.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Aluguer" Type="dbStand.Store.AluguerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Aluguer">
+        <PropertyRef Name="ClienteIdCliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

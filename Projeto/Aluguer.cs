@@ -19,10 +19,9 @@ namespace Projeto
         public string DataFim { get; set; }
         public string Valor { get; set; }
         public string Kms { get; set; }
-        public string ClienteIdCliente { get; set; }
-        public int ClienteIdCliente1 { get; set; }
+        public int ClienteIdCliente { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         public virtual CarroAluguer CarroAluguer { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }
