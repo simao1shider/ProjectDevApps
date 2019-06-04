@@ -152,7 +152,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -259,7 +258,6 @@
             this.clienteDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.clienteDataGridView.Size = new System.Drawing.Size(544, 250);
             this.clienteDataGridView.TabIndex = 1;
-            this.clienteDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clienteDataGridView_CellContentClick);
             // 
             // contactoTextBox
             // 

@@ -11,47 +11,62 @@ using System.Windows.Forms;
 
 namespace Projeto
 {
-    public partial class FormCarros1 : Form
+    public partial class FormCarros : Form
     {
         public dbStandContainer dbcontainer = null;
         public Carro carro = null;
-        public FormCarros1(Home form)
+        public FormCarros(Home form)
         {
             InitializeComponent();
             dbcontainer = form.dbcontainer;
             carro = form.carro;
-            (from pessoa in dbcontainer.ClienteSet
-             orderby pessoa.Nome
-             select pessoa).Load();
-            carroDataGridView.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+            (from carro in dbcontainer.CarroSet
+             select carro).Load();
+          carroBindingSource.DataSource = dbcontainer.CarroSet.Local.ToBindingList();
         }
 
         private void carroBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             dbcontainer.SaveChanges();
-            carro = carroDataGridView.CurrentRow.DataBoundItem as Carro;
+            try
+            {
+                carro = carroDataGridView.CurrentRow.DataBoundItem as Carro;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sem itens", "Erro",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FormCarros_Load(object sender, EventArgs e)
         {
-            carro = carroDataGridView.CurrentRow.DataBoundItem as Carro;
+            try
+            {
+                carro = carroDataGridView.CurrentRow.DataBoundItem as Carro;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sem itens", "Erro",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void filtrarbtn_Click(object sender, EventArgs e)
         {
-            if (textBoxfiltrar.Text.Length > 0)
+            if (textBoxFiltrar.Text.Length > 0)
             {
                 bindingNavigatorAddNewItem.Enabled = false;
 
                 dbcontainer = new dbStandContainer();
-                String textoFiltro = textBoxfiltrar.Text;
+                String textoFiltro = textBoxFiltrar.Text;
 
                 (from carro in dbcontainer.CarroSet
                  where carro.Modelo.ToUpper().Contains(textoFiltro.ToUpper())
                  orderby carro.Modelo
                  select carro).Load();
 
-                carroDataGridView.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+                carroDataGridView.DataSource = dbcontainer.CarroSet.Local.ToBindingList();
             }
             else
             {
@@ -64,7 +79,7 @@ namespace Projeto
                  orderby carro.Modelo
                  select carro).Load();
 
-                carroDataGridView.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+                carroDataGridView.DataSource = dbcontainer.CarroSet.Local.ToBindingList();
             }
         }
     }

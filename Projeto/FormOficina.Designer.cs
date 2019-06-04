@@ -36,13 +36,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.clienteSelecionado = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.listBoxCarros = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listBoxServicos = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listBoxParcelas = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,6 +128,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Carros";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 324);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(207, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Criar Carro";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // listBoxCarros
             // 
             this.listBoxCarros.FormattingEnabled = true;
@@ -146,6 +156,14 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Serviços";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(7, 324);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(194, 21);
+            this.comboBox1.TabIndex = 1;
             // 
             // listBoxServicos
             // 
@@ -172,23 +190,6 @@
             this.listBoxParcelas.Name = "listBoxParcelas";
             this.listBoxParcelas.Size = new System.Drawing.Size(244, 329);
             this.listBoxParcelas.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 324);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Criar Carro";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(7, 324);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(194, 21);
-            this.comboBox1.TabIndex = 1;
             // 
             // FormOficina
             // 

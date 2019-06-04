@@ -52,7 +52,7 @@ namespace Projeto
 
         private void button5_Click(object sender, EventArgs e)
         {
-            FormCarros1 carros = new FormCarros1(this);
+            FormCarros carros = new FormCarros(this);
             carros.Show();
         }
     }

@@ -88,11 +88,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbStand.edmx</DependentUpon>
     </Compile>
-    <Compile Include="FormCarros1.cs">
+    <Compile Include="FormCarros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCarros1.Designer.cs">
-      <DependentUpon>FormCarros1.cs</DependentUpon>
+    <Compile Include="FormCarros.Designer.cs">
+      <DependentUpon>FormCarros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCarroTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCarroTeste.Designer.cs">
+      <DependentUpon>FormCarroTeste.cs</DependentUpon>
     </Compile>
     <Compile Include="FormClientes.cs">
       <SubType>Form</SubType>
@@ -123,8 +129,11 @@
     <Compile Include="Venda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormCarros1.resx">
-      <DependentUpon>FormCarros1.cs</DependentUpon>
+    <EmbeddedResource Include="FormCarros.resx">
+      <DependentUpon>FormCarros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCarroTeste.resx">
+      <DependentUpon>FormCarroTeste.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClientes.resx">
       <DependentUpon>FormClientes.cs</DependentUpon>

@@ -15,6 +15,7 @@ namespace Projeto
     {
         public dbStandContainer dbcontainer = null;
         public Cliente cliente = null;
+        public Home formu = null;
 
 
         public FormOficina(Home form)
@@ -22,11 +23,17 @@ namespace Projeto
             InitializeComponent();
             dbcontainer = form.dbcontainer;
             cliente = form.cliente;
+            formu = form;
             (from pessoa in dbcontainer.ClienteSet
              orderby pessoa.Nome
              select pessoa).Load();
             listBoxClientes.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormCarros carro = new FormCarros(formu);
+            carro.Show();
+        }
     }
 }

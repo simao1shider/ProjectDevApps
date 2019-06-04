@@ -40,7 +40,6 @@
             this.numVendas = new System.Windows.Forms.ToolStripStatusLabel();
             this.numAlugueres = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button5 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,22 +140,11 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(200, 245);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Carro";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 364);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -185,7 +173,6 @@
         private System.Windows.Forms.ToolStripStatusLabel numClientes;
         private System.Windows.Forms.ToolStripStatusLabel numVendas;
         private System.Windows.Forms.ToolStripStatusLabel numAlugueres;
-        private System.Windows.Forms.Button button5;
     }
 }
 

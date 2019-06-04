@@ -30,23 +30,31 @@ namespace Projeto
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
+            try
+            {
+                cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sem itens", "Erro",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
-        private void clienteDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             dbcontainer.SaveChanges();
-            cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
-        }
-
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sem itens", "Erro",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void filtrar_Click(object sender, EventArgs e)
