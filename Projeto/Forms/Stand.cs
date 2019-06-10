@@ -19,6 +19,9 @@ namespace Projeto
         public Venda venda = new Venda();
         public Aluguer aluguer = new Aluguer();
         public Carro carro = new Carro();
+        public CarroOfficina carroOficina = new CarroOfficina();
+        public Servico servico = new Servico();
+        public Parcela parcela = new Parcela();
 
         public Home()
         {
@@ -50,10 +53,16 @@ namespace Projeto
             oficina.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            FormCarros carros = new FormCarros(this);
-            carros.Show();
+            FormVendas vendas = new FormVendas(this);
+            vendas.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormAlugueres alugueres = new FormAlugueres(this);
+            alugueres.Show();
         }
     }
 }

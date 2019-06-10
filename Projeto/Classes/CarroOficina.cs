@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Projeto
+{
+    public partial class CarroOfficina : Carro
+    {
+        public override string ToString()
+        {
+            return this.Matricula+" (Kms:"+this.Kms+")";
+        }
+    }
+}

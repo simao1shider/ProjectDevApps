@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/07/2019 02:46:26
+-- Date Created: 06/08/2019 18:16:08
 -- Generated from EDMX file: C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\dbStand.edmx
 -- --------------------------------------------------
 
@@ -87,9 +87,9 @@ GO
 -- Creating table 'ServicoSet'
 CREATE TABLE [dbo].[ServicoSet] (
     [IdServicos] int IDENTITY(1,1) NOT NULL,
-    [DataEntrada] nvarchar(max)  NOT NULL,
+    [DataEntrada] datetime  NOT NULL,
     [Tipo] nvarchar(max)  NOT NULL,
-    [DataSaida] nvarchar(max)  NOT NULL,
+    [DataSaida] datetime  NOT NULL,
     [CarroOfficina_IdCarro] int  NOT NULL
 );
 GO
@@ -97,10 +97,10 @@ GO
 -- Creating table 'AluguerSet'
 CREATE TABLE [dbo].[AluguerSet] (
     [IdAluguer] int IDENTITY(1,1) NOT NULL,
-    [DataInicio] nvarchar(max)  NOT NULL,
-    [DataFim] nvarchar(max)  NOT NULL,
-    [Valor] nvarchar(max)  NOT NULL,
-    [Kms] nvarchar(max)  NOT NULL,
+    [DataInicio] datetime  NOT NULL,
+    [DataFim] datetime  NOT NULL,
+    [Valor] decimal(18,0)  NOT NULL,
+    [Kms] int  NOT NULL,
     [ClienteIdCliente] int  NOT NULL,
     [CarroAluguer_IdCarro] int  NOT NULL
 );
@@ -109,7 +109,7 @@ GO
 -- Creating table 'ParcelaSet'
 CREATE TABLE [dbo].[ParcelaSet] (
     [IdParcela] int IDENTITY(1,1) NOT NULL,
-    [Valor] nvarchar(max)  NOT NULL,
+    [Valor] decimal(18,2)  NOT NULL,
     [Descricao] nvarchar(max)  NOT NULL,
     [ServicoIdServicos] nvarchar(max)  NOT NULL,
     [ServicoIdServicos1] int  NOT NULL
@@ -132,16 +132,16 @@ CREATE TABLE [dbo].[ClienteSet] (
     [Nome] nvarchar(max)  NOT NULL,
     [NIF] nvarchar(max)  NOT NULL,
     [Morada] nvarchar(max)  NOT NULL,
-    [Contacto] nvarchar(max)  NOT NULL
+    [Contacto] int  NOT NULL
 );
 GO
 
 -- Creating table 'VendaSet'
 CREATE TABLE [dbo].[VendaSet] (
     [IdVenda] int IDENTITY(1,1) NOT NULL,
-    [Valor] nvarchar(max)  NOT NULL,
+    [Valor] decimal(18,0)  NOT NULL,
     [Estado] nvarchar(max)  NOT NULL,
-    [Data] nvarchar(max)  NOT NULL,
+    [Data] datetime  NOT NULL,
     [ClienteIdCliente] int  NOT NULL,
     [CarroVenda_IdCarro] int  NOT NULL
 );
@@ -150,7 +150,7 @@ GO
 -- Creating table 'CarroSet_CarroOfficina'
 CREATE TABLE [dbo].[CarroSet_CarroOfficina] (
     [Matricula] nvarchar(max)  NOT NULL,
-    [Kms] nvarchar(max)  NOT NULL,
+    [Kms] int  NOT NULL,
     [ClienteIdCliente] int  NOT NULL,
     [IdCarro] int  NOT NULL
 );

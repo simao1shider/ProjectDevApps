@@ -56,9 +56,9 @@
       <PropertyRef Name="IdServicos" />
     </Key>
     <Property Name="IdServicos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DataEntrada" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataEntrada" Type="datetime" Nullable="false" />
     <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DataSaida" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataSaida" Type="datetime" Nullable="false" />
     <Property Name="CarroOfficina_IdCarro" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AluguerSet">
@@ -66,10 +66,10 @@
       <PropertyRef Name="IdAluguer" />
     </Key>
     <Property Name="IdAluguer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DataInicio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DataFim" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Kms" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataInicio" Type="datetime" Nullable="false" />
+    <Property Name="DataFim" Type="datetime" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Nullable="false" />
+    <Property Name="Kms" Type="int" Nullable="false" />
     <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="CarroAluguer_IdCarro" Type="int" Nullable="false" />
   </EntityType>
@@ -78,7 +78,7 @@
       <PropertyRef Name="IdParcela" />
     </Key>
     <Property Name="IdParcela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ServicoIdServicos" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ServicoIdServicos1" Type="int" Nullable="false" />
@@ -101,16 +101,16 @@
     <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
     <Property Name="NIF" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Morada" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Contacto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Contacto" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="VendaSet">
     <Key>
       <PropertyRef Name="IdVenda" />
     </Key>
     <Property Name="IdVenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Nullable="false" />
     <Property Name="Estado" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
     <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="CarroVenda_IdCarro" Type="int" Nullable="false" />
   </EntityType>
@@ -119,7 +119,7 @@
       <PropertyRef Name="IdCarro" />
     </Key>
     <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Kms" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kms" Type="int" Nullable="false" />
     <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="IdCarro" Type="int" Nullable="false" />
   </EntityType>

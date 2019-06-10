@@ -6,8 +6,6 @@ C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projet
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\bin\Debug\EntityFramework.xml
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.csprojAssemblyReference.cache
-C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormCarros.resources
-C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormCarroTeste.resources
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormClientes.resources
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormOficina.resources
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.Home.resources
@@ -17,3 +15,5 @@ C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projet
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.csproj.CopyComplete
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.exe
 C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.pdb
+C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormVendas.resources
+C:\Users\Simão Marques\OneDrive\TESP_PSI\Desenvolvimento de Aplicações\Projeto\ProjectDevApps\Projeto\obj\Debug\Projeto.FormAlugueres.resources

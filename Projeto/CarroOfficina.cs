@@ -21,7 +21,7 @@ namespace Projeto
         }
     
         public string Matricula { get; set; }
-        public string Kms { get; set; }
+        public int Kms { get; set; }
         public int ClienteIdCliente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

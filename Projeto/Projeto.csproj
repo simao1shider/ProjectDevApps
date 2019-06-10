@@ -70,6 +70,12 @@
     <Compile Include="CarroVenda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\CarroAluguer.cs" />
+    <Compile Include="Classes\Parcela.cs" />
+    <Compile Include="Classes\Servico.cs" />
+    <Compile Include="Classes\CarroOficina.cs" />
+    <Compile Include="Classes\Cliente.cs" />
+    <Compile Include="Classes\Venda.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
@@ -88,29 +94,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbStand.edmx</DependentUpon>
     </Compile>
-    <Compile Include="FormCarros.cs">
+    <Compile Include="dbStandDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAlugueres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCarros.Designer.cs">
-      <DependentUpon>FormCarros.cs</DependentUpon>
+    <Compile Include="Forms\FormAlugueres.Designer.cs">
+      <DependentUpon>FormAlugueres.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCarroTeste.cs">
+    <Compile Include="Forms\FormClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCarroTeste.Designer.cs">
-      <DependentUpon>FormCarroTeste.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormClientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormClientes.Designer.cs">
+    <Compile Include="Forms\FormClientes.Designer.cs">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOficina.cs">
+    <Compile Include="Forms\FormOficina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormOficina.Designer.cs">
+    <Compile Include="Forms\FormOficina.Designer.cs">
       <DependentUpon>FormOficina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormVendas.Designer.cs">
+      <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Parcela.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
@@ -118,10 +129,10 @@
     <Compile Include="Servico.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
-    <Compile Include="Stand.cs">
+    <Compile Include="Forms\Stand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stand.Designer.cs">
+    <Compile Include="Forms\Stand.Designer.cs">
       <DependentUpon>Stand.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -129,19 +140,19 @@
     <Compile Include="Venda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormCarros.resx">
-      <DependentUpon>FormCarros.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAlugueres.resx">
+      <DependentUpon>FormAlugueres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCarroTeste.resx">
-      <DependentUpon>FormCarroTeste.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormClientes.resx">
+    <EmbeddedResource Include="Forms\FormClientes.resx">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormOficina.resx">
+    <EmbeddedResource Include="Forms\FormOficina.resx">
       <DependentUpon>FormOficina.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stand.resx">
+    <EmbeddedResource Include="Forms\FormVendas.resx">
+      <DependentUpon>FormVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Stand.resx">
       <DependentUpon>Stand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -159,6 +170,17 @@
     </EntityDeploy>
     <None Include="dbStand.edmx.diagram">
       <DependentUpon>dbStand.edmx</DependentUpon>
+    </None>
+    <None Include="dbStandDataSet.xsc">
+      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbStandDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbStandDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dbStandDataSet.xss">
+      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Carro.datasource" />

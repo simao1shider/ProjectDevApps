@@ -15,10 +15,10 @@ namespace Projeto
     public partial class Aluguer
     {
         public int IdAluguer { get; set; }
-        public string DataInicio { get; set; }
-        public string DataFim { get; set; }
-        public string Valor { get; set; }
-        public string Kms { get; set; }
+        public System.DateTime DataInicio { get; set; }
+        public System.DateTime DataFim { get; set; }
+        public decimal Valor { get; set; }
+        public int Kms { get; set; }
         public int ClienteIdCliente { get; set; }
     
         public virtual CarroAluguer CarroAluguer { get; set; }

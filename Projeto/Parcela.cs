@@ -15,7 +15,7 @@ namespace Projeto
     public partial class Parcela
     {
         public int IdParcela { get; set; }
-        public string Valor { get; set; }
+        public decimal Valor { get; set; }
         public string Descricao { get; set; }
         public string ServicoIdServicos { get; set; }
         public int ServicoIdServicos1 { get; set; }
