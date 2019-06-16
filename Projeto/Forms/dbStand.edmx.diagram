@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75c345cedc934e0aa370be9e7eeb78f3" Name="Diagram1" ZoomLevel="98" >
+        <EntityTypeShape EntityType="dbStand.Cliente" Width="1.5" PointX="1.25" PointY="1.75" />
+        <EntityTypeShape EntityType="dbStand.CarroOficina" Width="1.5" PointX="12.625" PointY="0.5" />
+        <EntityTypeShape EntityType="dbStand.Servico" Width="1.5" PointX="8.75" PointY="1.125" />
+        <EntityTypeShape EntityType="dbStand.Parcela" Width="1.5" PointX="5.125" PointY="1" />
+        <EntityTypeShape EntityType="dbStand.Venda" Width="1.5" PointX="5.375" PointY="3.375" />
+        <EntityTypeShape EntityType="dbStand.CarroVenda" Width="1.5" PointX="8.375" PointY="3.5" />
+        <EntityTypeShape EntityType="dbStand.Aluguer" Width="1.5" PointX="3.5" PointY="5.875" />
+        <EntityTypeShape EntityType="dbStand.CarroAluguer" Width="1.5" PointX="12.625" PointY="6.125" />
+        <EntityTypeShape EntityType="dbStand.Carro" Width="1.5" PointX="12.875" PointY="3.375" />
+        <AssociationConnector Association="dbStand.ClienteCarroOficina" />
+        <AssociationConnector Association="dbStand.ClienteAluguer" />
+        <AssociationConnector Association="dbStand.ClienteVenda" />
+        <AssociationConnector Association="dbStand.VendaCarroVenda" />
+        <AssociationConnector Association="dbStand.CarroOficinaServico" />
+        <AssociationConnector Association="dbStand.ServicoParcela" />
+        <InheritanceConnector EntityType="dbStand.CarroVenda" />
+        <InheritanceConnector EntityType="dbStand.CarroOficina" />
+        <InheritanceConnector EntityType="dbStand.CarroAluguer" />
+        <AssociationConnector Association="dbStand.AluguerCarroAluguer" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

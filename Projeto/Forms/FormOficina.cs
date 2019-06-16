@@ -105,7 +105,7 @@ namespace Projeto
                 parcela.Descricao = textDescricao.Text;
                 parcela.Valor = valor;
 
-                servico.Parcelas.Add(parcela);
+                servico.Parcela.Add(parcela);
                 dbcontainer.SaveChanges();
                 limpaTextBox();
 
@@ -118,7 +118,7 @@ namespace Projeto
                 listBoxParcelas.DataSource = null;
                 if (servico != null)
                 {
-                    listBoxParcelas.DataSource = servico.Parcelas.ToList<Parcela>();
+                    listBoxParcelas.DataSource = servico.Parcela.ToList<Parcela>();
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace Projeto
 
             if (servico != null)
             {
-                listBoxParcelas.DataSource = servico.Parcelas.ToList<Parcela>();
+                listBoxParcelas.DataSource = servico.Parcela.ToList<Parcela>();
             }
         }
 
@@ -259,7 +259,7 @@ namespace Projeto
                 listBoxParcelas.DataSource = null;
                 if (servico != null)
                 {
-                    listBoxParcelas.DataSource = servico.Parcelas.ToList<Parcela>();
+                    listBoxParcelas.DataSource = servico.Parcela.ToList<Parcela>();
                 }
             }
         }
