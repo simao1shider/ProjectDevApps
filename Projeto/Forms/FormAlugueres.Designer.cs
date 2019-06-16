@@ -57,15 +57,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxClientes
             // 
             this.listBoxClientes.FormattingEnabled = true;
-            this.listBoxClientes.Location = new System.Drawing.Point(12, 12);
+            this.listBoxClientes.Location = new System.Drawing.Point(6, 19);
             this.listBoxClientes.Name = "listBoxClientes";
             this.listBoxClientes.Size = new System.Drawing.Size(192, 290);
             this.listBoxClientes.TabIndex = 0;
@@ -74,15 +82,15 @@
             // listBoxCarros
             // 
             this.listBoxCarros.FormattingEnabled = true;
-            this.listBoxCarros.Location = new System.Drawing.Point(210, 12);
+            this.listBoxCarros.Location = new System.Drawing.Point(6, 19);
             this.listBoxCarros.Name = "listBoxCarros";
-            this.listBoxCarros.Size = new System.Drawing.Size(270, 290);
+            this.listBoxCarros.Size = new System.Drawing.Size(259, 290);
             this.listBoxCarros.TabIndex = 1;
             // 
             // listBoxAlugueres
             // 
             this.listBoxAlugueres.FormattingEnabled = true;
-            this.listBoxAlugueres.Location = new System.Drawing.Point(486, 12);
+            this.listBoxAlugueres.Location = new System.Drawing.Point(6, 19);
             this.listBoxAlugueres.Name = "listBoxAlugueres";
             this.listBoxAlugueres.Size = new System.Drawing.Size(239, 290);
             this.listBoxAlugueres.TabIndex = 2;
@@ -102,7 +110,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(705, 94);
+            this.tabPage2.Size = new System.Drawing.Size(617, 94);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Adicionar Servico";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -129,7 +137,7 @@
             this.apagarAluguer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.apagarAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.apagarAluguer.ForeColor = System.Drawing.Color.Transparent;
-            this.apagarAluguer.Location = new System.Drawing.Point(661, 52);
+            this.apagarAluguer.Location = new System.Drawing.Point(573, 53);
             this.apagarAluguer.Margin = new System.Windows.Forms.Padding(0);
             this.apagarAluguer.Name = "apagarAluguer";
             this.apagarAluguer.Size = new System.Drawing.Size(41, 39);
@@ -143,7 +151,7 @@
             this.guardarAluguer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.guardarAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.guardarAluguer.ForeColor = System.Drawing.Color.Transparent;
-            this.guardarAluguer.Location = new System.Drawing.Point(661, 3);
+            this.guardarAluguer.Location = new System.Drawing.Point(573, 4);
             this.guardarAluguer.Margin = new System.Windows.Forms.Padding(0);
             this.guardarAluguer.Name = "guardarAluguer";
             this.guardarAluguer.Size = new System.Drawing.Size(41, 39);
@@ -218,7 +226,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(705, 94);
+            this.tabPage1.Size = new System.Drawing.Size(617, 94);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Adicionar Carro";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -229,7 +237,7 @@
             this.ApagarCarro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ApagarCarro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ApagarCarro.ForeColor = System.Drawing.Color.Transparent;
-            this.ApagarCarro.Location = new System.Drawing.Point(661, 52);
+            this.ApagarCarro.Location = new System.Drawing.Point(573, 49);
             this.ApagarCarro.Margin = new System.Windows.Forms.Padding(0);
             this.ApagarCarro.Name = "ApagarCarro";
             this.ApagarCarro.Size = new System.Drawing.Size(41, 39);
@@ -243,7 +251,7 @@
             this.guardarCarro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.guardarCarro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.guardarCarro.ForeColor = System.Drawing.Color.Transparent;
-            this.guardarCarro.Location = new System.Drawing.Point(661, 3);
+            this.guardarCarro.Location = new System.Drawing.Point(573, 0);
             this.guardarCarro.Margin = new System.Windows.Forms.Padding(0);
             this.guardarCarro.Name = "guardarCarro";
             this.guardarCarro.Size = new System.Drawing.Size(41, 39);
@@ -336,21 +344,62 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabControl1.Location = new System.Drawing.Point(12, 308);
+            this.tabControl1.Location = new System.Drawing.Point(3, 332);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(713, 120);
+            this.tabControl1.Size = new System.Drawing.Size(625, 120);
             this.tabControl1.TabIndex = 6;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listBoxClientes);
+            this.groupBox1.Location = new System.Drawing.Point(3, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(206, 314);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Clientes";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.listBoxCarros);
+            this.groupBox2.Location = new System.Drawing.Point(215, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(274, 314);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Carros";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listBoxAlugueres);
+            this.groupBox3.Location = new System.Drawing.Point(495, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(252, 314);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Alugueres";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(634, 354);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 94);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Exportar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormAlugueres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 433);
+            this.ClientSize = new System.Drawing.Size(752, 455);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.listBoxAlugueres);
-            this.Controls.Add(this.listBoxCarros);
-            this.Controls.Add(this.listBoxClientes);
             this.Name = "FormAlugueres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAlugueres";
@@ -360,6 +409,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -394,5 +446,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

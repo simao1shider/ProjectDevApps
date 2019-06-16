@@ -64,13 +64,15 @@
     <Compile Include="CarroAluguer.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarroOfficina.cs">
+    <Compile Include="CarroOficina.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
     <Compile Include="CarroVenda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Aluguer.cs" />
     <Compile Include="Classes\CarroAluguer.cs" />
+    <Compile Include="Classes\CarroVenda.cs" />
     <Compile Include="Classes\Parcela.cs" />
     <Compile Include="Classes\Servico.cs" />
     <Compile Include="Classes\CarroOficina.cs" />
@@ -93,11 +95,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbStand.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="dbStandDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormAlugueres.cs">
       <SubType>Form</SubType>
@@ -123,20 +120,20 @@
     <Compile Include="Forms\FormVendas.Designer.cs">
       <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parcela.cs">
-      <DependentUpon>dbStand.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Servico.cs">
-      <DependentUpon>dbStand.tt</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Stand.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Stand.Designer.cs">
       <DependentUpon>Stand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Parcela.cs">
+      <DependentUpon>dbStand.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servico.cs">
+      <DependentUpon>dbStand.tt</DependentUpon>
+    </Compile>
     <Compile Include="Venda.cs">
       <DependentUpon>dbStand.tt</DependentUpon>
     </Compile>
@@ -171,17 +168,6 @@
     <None Include="dbStand.edmx.diagram">
       <DependentUpon>dbStand.edmx</DependentUpon>
     </None>
-    <None Include="dbStandDataSet.xsc">
-      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="dbStandDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbStandDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="dbStandDataSet.xss">
-      <DependentUpon>dbStandDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Carro.datasource" />
     <None Include="Properties\DataSources\Cliente.datasource" />
@@ -199,21 +185,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="dbStand.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>dbStand.Context.cs</LastGenOutput>
       <DependentUpon>dbStand.edmx</DependentUpon>
     </Content>
-    <Content Include="dbStand.edmx.sql" />
     <Content Include="dbStand.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>dbStand.cs</LastGenOutput>
       <DependentUpon>dbStand.edmx</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,12 +14,12 @@ namespace Projeto
     public partial class Home : Form
     {
         private DateTime contadorTempo;
-        public dbStandContainer dbcontainer = new dbStandContainer();
+        public dbStandContainerDA dbcontainer = new dbStandContainerDA();
         public Cliente cliente = new Cliente();
         public Venda venda = new Venda();
         public Aluguer aluguer = new Aluguer();
         public Carro carro = new Carro();
-        public CarroOfficina carroOficina = new CarroOfficina();
+        public CarroOficina carroOficina = new CarroOficina();
         public Servico servico = new Servico();
         public Parcela parcela = new Parcela();
 
@@ -33,11 +33,11 @@ namespace Projeto
         {
             toolStripStatusLabelHora.Text = DateTime.Now.ToShortDateString()+" "+DateTime.Now.ToLongTimeString();
 
-            numClientes.Text = "Clientes: " + (from cliente in dbcontainer.ClienteSet
+            numClientes.Text = "Clientes: " + (from cliente in dbcontainer.Cliente
                                                select cliente).Count();
-            numVendas.Text = "Vendas: " + (from venda in dbcontainer.VendaSet
+            numVendas.Text = "Vendas: " + (from venda in dbcontainer.Venda
                                                select venda).Count();
-            numAlugueres.Text = "Alugueres: " + (from aluguer in dbcontainer.AluguerSet
+            numAlugueres.Text = "Alugueres: " + (from aluguer in dbcontainer.Aluguer
                                                select aluguer).Count();
         }
 

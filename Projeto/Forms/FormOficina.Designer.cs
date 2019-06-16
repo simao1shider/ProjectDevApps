@@ -69,6 +69,8 @@
             this.textValor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textDescricao = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -485,12 +487,23 @@
             this.textDescricao.Size = new System.Drawing.Size(169, 20);
             this.textDescricao.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(54, 540);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 41);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Exportar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormOficina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(963, 628);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -557,5 +570,7 @@
         private System.Windows.Forms.TextBox textValor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textDescricao;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

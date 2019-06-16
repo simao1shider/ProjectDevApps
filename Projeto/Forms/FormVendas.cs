@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Projeto
 {
     public partial class FormVendas : Form
     {
-        public dbStandContainer dbcontainer = null;
+        public dbStandContainerDA dbcontainer = null;
         public Cliente cliente = null;
         public Venda venda = null;
 
@@ -21,7 +22,7 @@ namespace Projeto
             InitializeComponent();
             dbcontainer = form.dbcontainer;
 
-            listBoxClientes.DataSource = dbcontainer.ClienteSet.ToList<Cliente>();
+            listBoxClientes.DataSource = dbcontainer.Cliente.ToList<Cliente>();
         }
 
         private void guardarParcela_Click(object sender, EventArgs e)
@@ -29,7 +30,11 @@ namespace Projeto
             Cliente cliente = listBoxClientes.SelectedItem as Cliente;
             Venda venda = new Venda();
             venda.CarroVenda = new CarroVenda();
-
+            if(cliente == null)
+            {
+                MessageBox.Show("Tem de inserir um cliente para registar uma venda!", "Erro");
+                return;
+            }
             DialogResult save = MessageBox.Show("Tem a certeza que quer inserir esta venda?", "Sim", MessageBoxButtons.YesNo);
 
             if (save == DialogResult.Yes)
@@ -54,7 +59,7 @@ namespace Projeto
                     venda.CarroVenda.Combustivel = textCombustivel.Text;
                     venda.CarroVenda.Extras = textExtras.Text;
 
-                    cliente.Vendas.Add(venda);
+                    cliente.Venda.Add(venda);
 
                     try
                     {
@@ -72,7 +77,7 @@ namespace Projeto
 
                     if (cliente != null)
                     {
-                        listBoxVendas.DataSource = cliente.Vendas.ToList<Venda>();
+                        listBoxVendas.DataSource = cliente.Venda.ToList<Venda>();
 
                     }
 
@@ -90,14 +95,19 @@ namespace Projeto
         {
             Cliente cliente = listBoxClientes.SelectedItem as Cliente;
             Venda venda = listBoxVendas.SelectedItem as Venda;
+            if(venda == null)
+            {
+                MessageBox.Show("Nao existem vendas da remover!", "ERRO");
+                return;
+            }
             CarroVenda carroVenda = venda.CarroVenda;
 
             DialogResult delete = MessageBox.Show("Tem a certeza que pretende apagar a Parcela?", "Sim, Apagar!!", MessageBoxButtons.YesNo);
 
             if (delete == DialogResult.Yes)
             {
-                dbcontainer.CarroSet.Remove(carroVenda);
-                dbcontainer.VendaSet.Remove(venda);
+                dbcontainer.Carro.Remove(carroVenda);
+                dbcontainer.Venda.Remove(venda);
                 dbcontainer.SaveChanges();
 
                 MessageBox.Show("Venda removido com sucesso!", "REMOVER", MessageBoxButtons.OK);
@@ -105,7 +115,7 @@ namespace Projeto
                 listBoxVendas.DataSource = null;
                 if (cliente != null)
                 {
-                    listBoxVendas.DataSource = cliente.Vendas.ToList<Venda>();
+                    listBoxVendas.DataSource = cliente.Venda.ToList<Venda>();
                 }
             }
         }
@@ -118,7 +128,7 @@ namespace Projeto
 
             if (cliente != null)
             {
-                listBoxVendas.DataSource = cliente.Vendas.ToList<Venda>();
+                listBoxVendas.DataSource = cliente.Venda.ToList<Venda>();
 
             }
             
@@ -152,6 +162,79 @@ namespace Projeto
             textExtras.Text = "";
             textEstado.Text = "";
             textValor.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBoxClientes.SelectedIndex != -1 || listBoxVendas.SelectedIndex != -1)
+            {
+
+                Cliente cliente = listBoxClientes.SelectedItem as Cliente;
+                Venda venda = listBoxVendas.SelectedItem as Venda;
+
+                if (cliente != null)
+                {
+                    if (venda != null)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tem de ter vendas para exportar fatura!");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tem de ter clientes para exportar fatura!");
+                    return;
+                }
+
+                saveFileDialog.Filter = "Ficheiro TXT (.txt)|.txt";
+                saveFileDialog.FileName = cliente.Nome + "" + venda.Estado + ".txt";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter ficheiro = new StreamWriter(saveFileDialog.FileName, false);
+                    string separador = "#########################################################";
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine("Fatura Simplificada");
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine("____________CLIENTE____________");
+                    ficheiro.WriteLine("Cliente: " + cliente.Nome);
+                    ficheiro.WriteLine("Nif: " + cliente.NIF);
+                    ficheiro.WriteLine("Contacto: " + cliente.Contacto);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("____________CARRO____________");
+                    ficheiro.WriteLine("N Chassi: " + venda.CarroVenda.NumeroChassis);
+                    ficheiro.WriteLine("Marca: " + venda.CarroVenda.Marca);
+                    ficheiro.WriteLine("Modelo: " + venda.CarroVenda.Modelo);
+                    ficheiro.WriteLine("Combustivel: " + venda.CarroVenda.Combustivel);
+                    ficheiro.WriteLine("Extras: " + venda.CarroVenda.Extras);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("____________VENDA____________");
+                    ficheiro.WriteLine("Estado: " + venda.Estado);
+                    ficheiro.WriteLine("Data: " + venda.Data);
+                    ficheiro.WriteLine("Valor: " + venda.Valor);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("Data de Exportação: " + DateTime.Now.ToString());
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+
+                    ficheiro.Close();
+                    MessageBox.Show("Fatura Exportada com sucesso!");
+                }
+            }
         }
     }
 }

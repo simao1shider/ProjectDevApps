@@ -11,7 +11,7 @@ namespace Projeto
     {
         public override string ToString()
         {
-            return this.DataEntrada.ToShortDateString() + " (tipo:"+this.Tipo+")"+"("+this.Total+")";
+            return this.DataEntrada.ToShortDateString() + " (tipo:"+this.Tipo+")"+"("+this.Total+ " €)";
         }
 
         public Decimal Total
@@ -20,7 +20,7 @@ namespace Projeto
             {
                 Decimal calculo = 0;
 
-                foreach (Parcela item in this.Parcelas)
+                foreach (Parcela item in this.Parcela)
                 {
                     calculo = calculo + item.Valor;
 

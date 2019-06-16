@@ -13,7 +13,7 @@ namespace Projeto
 {
     public partial class FormClientes : Form
     {
-        public dbStandContainer dbcontainer = null;
+        public dbStandContainerDA dbcontainer = null;
         public Cliente cliente = null;
 
         public FormClientes(Home form)
@@ -21,23 +21,22 @@ namespace Projeto
             InitializeComponent();
             dbcontainer = form.dbcontainer;
             cliente = form.cliente;
-            (from pessoa in dbcontainer.ClienteSet
+            (from pessoa in dbcontainer.Cliente
              orderby pessoa.Nome
              select pessoa).Load();
-            clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+            clienteBindingSource.DataSource = dbcontainer.Cliente.Local.ToBindingList();
 
         }
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            try
+            if(cliente != null)
             {
                 cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Sem itens", "Erro",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nao existem clientes!", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -47,15 +46,14 @@ namespace Projeto
         {
             if (EmptyTextBoxVerify(contactoTextBox, moradaTextBox, nIFTextBox, nomeTextBox))
             {
-                try
+                if (cliente != null)
                 {
                     dbcontainer.SaveChanges();
                     cliente = clienteDataGridView.CurrentRow.DataBoundItem as Cliente;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Sem itens", "Erro",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nao existem clientes!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -79,28 +77,28 @@ namespace Projeto
             {
                 bindingNavigatorAddNewItem.Enabled = false;
 
-                dbcontainer = new dbStandContainer();
+                dbcontainer = new dbStandContainerDA();
                 String textoFiltro = textBoxFiltrar.Text;
 
-                (from pessoa in dbcontainer.ClienteSet
+                (from pessoa in dbcontainer.Cliente
                  where pessoa.Nome.ToUpper().Contains(textoFiltro.ToUpper())
                  orderby pessoa.Nome
                  select pessoa).Load();
 
-                clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+                clienteBindingSource.DataSource = dbcontainer.Cliente.Local.ToBindingList();
             }
             else
             {
                 bindingNavigatorAddNewItem.Enabled = true;
 
                 dbcontainer.Dispose();
-                dbcontainer = new dbStandContainer();
+                dbcontainer = new dbStandContainerDA();
 
-                (from pessoa in dbcontainer.ClienteSet
+                (from pessoa in dbcontainer.Cliente
                  orderby pessoa.Nome
                  select pessoa).Load();
 
-                clienteBindingSource.DataSource = dbcontainer.ClienteSet.Local.ToBindingList();
+                clienteBindingSource.DataSource = dbcontainer.Cliente.Local.ToBindingList();
             }
         }
     }

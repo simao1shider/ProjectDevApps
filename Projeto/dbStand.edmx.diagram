@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af699c35e5074a41bf54e00fbe358bf6" Name="Diagram1" ZoomLevel="92" >
+        <EntityTypeShape EntityType="dbStand.Cliente" Width="1.5" PointX="0.5" PointY="4.125" />
+        <EntityTypeShape EntityType="dbStand.Venda" Width="1.5" PointX="4.5" PointY="4.25" />
+        <EntityTypeShape EntityType="dbStand.Carro" Width="1.5" PointX="10.875" PointY="4.125" />
+        <EntityTypeShape EntityType="dbStand.Aluguer" Width="1.5" PointX="4.5" PointY="7.25" />
+        <EntityTypeShape EntityType="dbStand.CarroAluguer" Width="1.5" PointX="10.875" PointY="6.875" />
+        <EntityTypeShape EntityType="dbStand.CarroVenda" Width="1.5" PointX="7.5" PointY="4.25" />
+        <EntityTypeShape EntityType="dbStand.Parcela" Width="1.5" PointX="4.5" PointY="1.625" />
+        <EntityTypeShape EntityType="dbStand.Servico" Width="1.5" PointX="7.625" PointY="1.5" />
+        <EntityTypeShape EntityType="dbStand.CarroOficina" Width="1.5" PointX="10.875" PointY="0.5" />
+        <AssociationConnector Association="dbStand.ClienteCarroOficina" />
+        <AssociationConnector Association="dbStand.ClienteAluguer" />
+        <AssociationConnector Association="dbStand.ClienteVenda" />
+        <AssociationConnector Association="dbStand.AluguerCarroAluguer" />
+        <AssociationConnector Association="dbStand.VendaCarroVenda" />
+        <AssociationConnector Association="dbStand.ServicoParcela" />
+        <AssociationConnector Association="dbStand.CarroOficinaServico" />
+        <InheritanceConnector EntityType="dbStand.CarroAluguer" />
+        <InheritanceConnector EntityType="dbStand.CarroVenda" />
+        <InheritanceConnector EntityType="dbStand.CarroOficina" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

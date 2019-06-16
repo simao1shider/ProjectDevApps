@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Projeto
 {
-    public partial class CarroOficina : Carro
+    public partial class Aluguer
     {
         public override string ToString()
         {
-            return this.Matricula+" (Kms:"+this.Kms+")";
+            return this.CarroAluguer.Marca + " - " + this.CarroAluguer.Matricula + " (" + this.Valor + " €)";
         }
     }
 }

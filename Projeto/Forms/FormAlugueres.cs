@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Projeto
 {
     public partial class FormAlugueres : Form
     {
-        public dbStandContainer dbcontainer = null;
+        public dbStandContainerDA dbcontainer = null;
         public FormAlugueres(Home form)
         {
             InitializeComponent();
@@ -21,8 +22,8 @@ namespace Projeto
 
         private void FormAlugueres_Load(object sender, EventArgs e)
         {
-            listBoxClientes.DataSource = dbcontainer.ClienteSet.ToList<Cliente>();
-            listBoxCarros.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
+            listBoxClientes.DataSource = dbcontainer.Cliente.ToList<Cliente>();
+            listBoxCarros.DataSource = dbcontainer.Carro.OfType<CarroAluguer>().ToList();
         }
 
         private void listBoxClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace Projeto
 
         private void guardarCarro_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = listBoxClientes.SelectedItem as Cliente;
+            Cliente cliente = listBoxClientes.SelectedItem as Cliente;
 
             CarroAluguer carroAluguer = new CarroAluguer();
 
@@ -49,6 +50,12 @@ namespace Projeto
 
             if (guardar == DialogResult.Yes)
             {
+                if(cliente == null)
+                {
+                    MessageBox.Show("Tem de inserir clientes!", "ERRO");
+                    return;
+                }
+
                 if (EmptyTextBoxVerify(textNChassis, textMarca, textModelo, textCombustivel, textMatricula))
                 {
 
@@ -59,11 +66,11 @@ namespace Projeto
                     carroAluguer.Matricula = textMatricula.Text;
                     carroAluguer.Estado = "Disponivel";
 
-                    dbcontainer.CarroSet.Add(carroAluguer);
+                    dbcontainer.Carro.Add(carroAluguer);
 
                     dbcontainer.SaveChanges();
 
-                    listBoxCarros.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
+                    listBoxCarros.DataSource = dbcontainer.Carro.OfType<CarroAluguer>().ToList();
                     MessageBox.Show("Carro inserido!", "SUCESSO");
                 }
             }
@@ -78,17 +85,23 @@ namespace Projeto
 
             if (delete == DialogResult.Yes)
             {
+                if (carroAluguer == null)
+                {
+                    MessageBox.Show("Nao existem carros para remover!", "ERRO");
+                    return;
+                }
+
                 if (carroAluguer.Estado == "Indisponivel")
                 {
                     MessageBox.Show("Nao e possivel apagar porque o carro tem Alugueres associados", "Erro");
                 }
                 else
                 {
-                    dbcontainer.CarroSet.Remove(carroAluguer);
+                    dbcontainer.Carro.Remove(carroAluguer);
 
                     dbcontainer.SaveChanges();
 
-                    listBoxCarros.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
+                    listBoxCarros.DataSource = dbcontainer.Carro.OfType<CarroAluguer>().ToList();
 
                     MessageBox.Show("Carro Removido!", "SUCESSO");
                 }
@@ -116,6 +129,12 @@ namespace Projeto
                         return;
                     }
 
+                    if(carroAluguer.Estado == "Indisponivel")
+                    {
+                        MessageBox.Show("Tem de inserir outro carro este ja está em aluguer!", "Erro");
+                        return;
+                    }
+
                     carroAluguer.Estado = "Indisponivel";
                     aluguer.DataInicio = Convert.ToDateTime(dateTimePickerInicio.Text);
                     aluguer.DataFim = Convert.ToDateTime(dateTimePickerFim.Text);
@@ -124,13 +143,13 @@ namespace Projeto
                     aluguer.Cliente = cliente;
                     aluguer.CarroAluguer = carroAluguer;
 
-                    dbcontainer.AluguerSet.Add(aluguer);
+                    dbcontainer.Aluguer.Add(aluguer);
 
                     dbcontainer.SaveChanges();
 
-                    listBoxCarros.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
                     cliente = listBoxClientes.SelectedItem as Cliente;
-                    listBoxAlugueres.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
+                    listBoxAlugueres.DataSource = cliente.Aluguer.ToList();
+                    listBoxCarros.DataSource = dbcontainer.Carro.OfType<CarroAluguer>().ToList();
                     MessageBox.Show("Aluguer Inserido!", "SUCESSO");
                 }
             }
@@ -138,18 +157,24 @@ namespace Projeto
 
         private void apagarAluguer_Click(object sender, EventArgs e)
         {
+            Cliente cliente = listBoxClientes.SelectedItem as Cliente;
             Aluguer aluguer = listBoxAlugueres.SelectedItem as Aluguer;
 
             DialogResult delete = MessageBox.Show("Quer mesmo remover o Aluguer? ", "Apagar", MessageBoxButtons.YesNo);
 
             if (delete == DialogResult.Yes)
             {
+                if(aluguer == null)
+                {
+                    MessageBox.Show("Nao existem alugueres para remover!", "ERRO");
+                    return;
+                }
                 aluguer.CarroAluguer.Estado = "Disponivel";
-                dbcontainer.AluguerSet.Remove(aluguer);
+                dbcontainer.Aluguer.Remove(aluguer);
                 dbcontainer.SaveChanges();
 
-                listBoxAlugueres.DataSource = dbcontainer.AluguerSet.OfType<Aluguer>().ToList();
-                listBoxCarros.DataSource = dbcontainer.CarroSet.OfType<CarroAluguer>().ToList();
+                listBoxAlugueres.DataSource = cliente.Aluguer.ToList();
+                listBoxCarros.DataSource = dbcontainer.Carro.OfType<CarroAluguer>().ToList();
                 MessageBox.Show("Aluguer Removido!", "SUCESSO");
 
             }
@@ -169,6 +194,77 @@ namespace Projeto
             return true;
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBoxClientes.SelectedIndex != -1 || listBoxAlugueres.SelectedIndex != -1)
+            {
+
+                Cliente cliente = listBoxClientes.SelectedItem as Cliente;
+                Aluguer aluguer = listBoxAlugueres.SelectedItem as Aluguer;
+                if (cliente != null)
+                {
+                    if (aluguer != null)
+                    {
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tem de ter alugueres para exportar fatura!");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tem de ter clientes para exportar fatura!");
+                    return;
+                }
+
+                saveFileDialog.Filter = "Ficheiro TXT (.txt)|.txt";
+                saveFileDialog.FileName = cliente.Nome + "_Kms" + aluguer.Kms + ".txt";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter ficheiro = new StreamWriter(saveFileDialog.FileName, false);
+                    string separador = "#########################################################";
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine("Fatura Simplificada");
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine("____________CLIENTE____________");
+                    ficheiro.WriteLine("Cliente: " + cliente.Nome);
+                    ficheiro.WriteLine("Nif: " + cliente.NIF);
+                    ficheiro.WriteLine("Contacto: " + cliente.Contacto);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("____________CARRO____________");
+                    ficheiro.WriteLine("N Chassi: " + aluguer.CarroAluguer.NumeroChassis);
+                    ficheiro.WriteLine("Marca: " + aluguer.CarroAluguer.Marca);
+                    ficheiro.WriteLine("Modelo: " + aluguer.CarroAluguer.Modelo);
+                    ficheiro.WriteLine("Combustivel: " + aluguer.CarroAluguer.Combustivel);
+                    ficheiro.WriteLine("Matricula: " + aluguer.CarroAluguer.Matricula);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("____________Aluguer____________");
+                    ficheiro.WriteLine("Kms: " + aluguer.Kms);
+                    ficheiro.WriteLine("Data Inicio: " + aluguer.DataInicio);
+                    ficheiro.WriteLine("Data Fim: " + aluguer.DataFim);
+                    ficheiro.WriteLine("Valor: " + aluguer.Valor);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(string.Empty);
+                    ficheiro.WriteLine("Data de Exportação: " + DateTime.Now.ToString());
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+                    ficheiro.WriteLine(separador);
+
+                    ficheiro.Close();
+                    MessageBox.Show("Fatura Exportada com sucesso!");
+                }
+            }
+        }
     }
 }
